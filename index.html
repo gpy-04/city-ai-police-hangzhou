@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f6f2"><meta name="description" content="驾驶小杭无人机，在杭州主题的2D小城市里完成60秒文明交通巡逻。发现违规，友善沟通，一起学习安全知识。"><title>城市 AI 小警察 · 杭州文明巡逻计划</title><link rel="icon" type="image/svg+xml" href="icon.svg"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="responsive.css"></head>
+<body>
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+<symbol id="i-drone" viewBox="0 0 32 32"><path d="m11 12-5-5m15 5 5-5M11 20l-5 5m15-5 5 5"/><rect x="10" y="10" width="12" height="13" rx="4"/><path d="M14 15h4m-5 4h6"/><ellipse cx="6" cy="6" rx="5" ry="3"/><ellipse cx="26" cy="6" rx="5" ry="3"/><ellipse cx="6" cy="26" rx="5" ry="3"/><ellipse cx="26" cy="26" rx="5" ry="3"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="m9 4-6 3v14l6-3 6 3 6-3V4l-6 3-6-3Zm0 0v14m6-11v14"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5C8 2 3 4 3 4v16s5-2 9 1c4-3 9-1 9-1V4s-5-2-9 1Zm0 0v16M6 8h3m-3 4h3m6-4h3m-3 4h3"/></symbol>
+<symbol id="i-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8 14-2 8 6-3 6 3-2-8m-6-5 1.5 1.5L14 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4Zm5 4c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></symbol>
+<symbol id="i-mute" viewBox="0 0 24 24"><path d="m11 4-6 5H2v6h3l6 5V4Zm5 5 6 6m0-6-6 6"/></symbol>
+<symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 5 2c-2 1-2 1-2 3m0 3h.01"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6m-3 0v3m6 1 2-2"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/><circle cx="12" cy="12" r="4"/><path d="M12 10v4m-2-2h4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+<symbol id="i-light" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="17" rx="4"/><path d="M12 19v3"/><circle cx="12" cy="6" r="1"/><circle cx="12" cy="11" r="1"/><circle cx="12" cy="16" r="1"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="m5 7 2-4h10l2 4 2 3v8H3v-8l2-3Zm0 0h14M3 12h18M6 18v3m12-3v3M6 15h2m8 0h2"/></symbol>
+<symbol id="i-walk" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="m8 12 3-5 4 2 3 4m-7-3-1 6-4 6m5-7 5 3 1 4M3 16h3m12 0h3"/></symbol>
+<symbol id="i-bike" viewBox="0 0 24 24"><circle cx="5" cy="17" r="4"/><circle cx="19" cy="17" r="4"/><path d="m5 17 5-10 5 10H5Zm14 0-4-13h-3m-5 3h5"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C7 2 1 10 6 16s15 2 14-13ZM4 21 16 8m-5 5v-4m0 4h5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l2 2m12 12 2 2M4 20l2-2M18 6l2-2"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+</defs></svg>
+<a class="skip-link" href="#cityCanvas">跳至巡逻地图</a>
+<header class="site-header">
+<a class="brand" href="./" aria-label="城市AI小警察首页"><span class="brand-icon"><svg><use href="#i-drone"/></svg></span><span>城市 <b>AI</b> 小警察<small>HANGZHOU CITY GUARDIAN</small></span></a>
+<nav aria-label="主导航"><button class="nav-item active" id="navPatrol"><svg><use href="#i-map"/></svg>巡逻任务</button><button class="nav-item" id="navBook"><svg><use href="#i-book"/></svg>文明交通手册</button><button class="nav-item" id="navRecords"><svg><use href="#i-medal"/></svg>巡逻档案</button></nav>
+<div class="header-tools"><span class="local-tag"><i></i>杭州特别行动</span><button class="icon-button" id="soundButton" aria-label="开启音效" aria-pressed="false" title="开启音效"><svg><use href="#i-mute"/></svg></button><button class="icon-button" id="helpButton" aria-label="操作说明" title="操作说明"><svg><use href="#i-help"/></svg></button></div>
+</header>
+<main>
+<section class="intro" aria-labelledby="gameTitle"><div><div class="eyebrow"><span>城市文明守护计划</span><i></i>VOL. 01 · 杭州</div><h1 id="gameTitle">小小无人机，<span>守护大城文明。</span></h1><p>飞过西湖的风，巡过钱江的路。和小杭一起，让文明在城市里发生。</p></div><div class="scene-stamp"><svg><use href="#i-sun"/></svg><span>西湖晴日<small>HANGZHOU · 美好城市进行时</small></span></div></section>
+<div class="game-layout">
+<section class="map-panel" aria-label="杭州巡逻地图">
+<div class="map-toolbar"><div class="map-title"><svg><use href="#i-pin"/></svg><strong id="currentDistrict">杭州 · 西湖湖滨</strong><span class="map-version">六片街区 · 开放巡逻</span></div><div class="map-live"><i></i><span id="mapStatus">无人机待命</span><span class="map-signal" aria-hidden="true">▂▄▆</span></div></div>
+<div class="map-stage" id="mapStage">
+<canvas id="cityCanvas" tabindex="0" role="application" aria-label="杭州主题城市地图。开始后用WASD或方向键驾驶无人机，靠近橙色感叹号按空格扫描。也可以点击目标自动飞行并扫描。"></canvas>
+<div class="map-location"><span class="north">N<span>↑</span></span><div><span class="location-dot"></span>全城联动 · 20 类不同事件<small>虚拟科普地图 · 非真实路网</small></div></div><div class="map-weather"><svg><use href="#i-leaf"/></svg>镜头跟随 · 飞向新的街区</div>
+<div class="ready-note" id="readyNote"><span class="ready-symbol"><svg><use href="#i-drone"/></svg></span><div><strong>小杭已就位，等你一起出发</strong><span>点击「开始巡逻」，开启 60 秒文明任务</span></div><span class="ready-arrow">↗</span><button class="mobile-start" id="mobileStartButton">起飞</button></div>
+<div class="mobile-hud" id="mobileHud" hidden><span><b id="mobileTime">60</b> 秒</span><span><b id="mobileScore">0</b> 分</span><button id="mobilePauseButton" aria-label="暂停巡逻"><svg><use href="#i-pause"/></svg></button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="touch-controls" id="touchControls" hidden aria-label="触屏方向键"><button data-dir="up" aria-label="向上飞">↑</button><button data-dir="left" aria-label="向左飞">←</button><button data-dir="down" aria-label="向下飞">↓</button><button data-dir="right" aria-label="向右飞">→</button></div>
+<button class="scan-hint" id="scanHint" hidden aria-label="扫描附近交通问题"><svg><use href="#i-target"/></svg><span id="scanHintText">靠近橙色标记，发现交通问题</span></button>
+<div class="world-overview"><div class="overview-title"><span>全城导航</span><span>已探索 <b id="exploredCount">1/6</b></span></div><canvas id="miniMap" tabindex="0" role="application" aria-label="全城小地图。点击橙色事件标记自动飞近扫描，点击其他位置导航。六个街区均可飞行探索。"></canvas><div class="overview-caption">点击橙点 · 跨街区自动飞行</div></div>
+<button class="boost-button" id="boostButton" aria-label="切换加速飞行" aria-pressed="false"><span>↗</span>加速 <kbd>SHIFT</kbd></button>
+</div>
+<div class="map-bottom"><div class="legend"><span><i class="legend-drone"></i>小杭无人机</span><span><i class="legend-alert"></i>待劝导目标</span><span><i class="legend-done"></i>已纠正</span></div><span class="map-scale"><i></i>文明，从身边开始</span></div>
+</section>
+<aside class="mission-panel" aria-label="巡逻任务控制台">
+<div class="mission-body">
+<div class="mission-top"><span class="section-label">你的巡逻任务</span><span class="level-badge">新晋守护者</span></div>
+<div class="time-block"><span class="time-icon"><svg><use href="#i-clock"/></svg></span><div><span class="time-description" id="timeDescription">本次巡逻剩余</span><div class="time-number"><strong id="timeValue">60</strong><span>秒</span></div></div><button class="pause-button" id="pauseButton" aria-label="暂停巡逻" title="暂停巡逻" disabled><svg><use href="#i-pause"/></svg></button></div><div class="time-track"><span id="timeBar"></span></div>
+<div class="score-row"><div><span>文明积分</span><strong id="scoreValue">000<span>分</span></strong></div><div><span>成功劝导</span><strong><b id="caughtValue">0</b><span id="totalValue">/ 20 起</span></strong></div></div>
+<div class="mission-divider"></div><div class="targets-heading"><span class="section-label">全城事件分类</span><span>20 类 · 同局不重复</span></div>
+<div class="target-list">
+<div class="target-type"><span class="type-icon coral"><svg><use href="#i-light"/></svg></span><div><strong>通行秩序</strong><span>信号 · 方向 · 车道</span></div><span class="type-count" data-group="order">0/6</span></div>
+<div class="target-type"><span class="type-icon gold"><svg><use href="#i-car"/></svg></span><div><strong>规范停车</strong><span>通道 · 站点 · 车门</span></div><span class="type-count" data-group="parking">0/4</span></div>
+<div class="target-type"><span class="type-icon mint"><svg><use href="#i-bike"/></svg></span><div><strong>安全驾驶</strong><span>头盔 · 专注 · 休息</span></div><span class="type-count" data-group="safety">0/6</span></div>
+<div class="target-type"><span class="type-icon blue"><svg><use href="#i-walk"/></svg></span><div><strong>礼让与文明</strong><span>礼让 · 推行 · 安静</span></div><span class="type-count" data-group="civility">0/4</span></div>
+</div>
+<div class="nearby-panel"><div class="targets-heading"><span class="section-label">附近优先巡查</span><span>点击自动飞往</span></div><div class="nearby-list" id="nearbyList"></div></div>
+</div>
+<div class="mission-actions">
+<button class="primary-button start-button" id="startButton"><svg><use href="#i-drone"/></svg><span>开始巡逻</span><svg><use href="#i-arrow"/></svg></button>
+<button class="primary-button scan-button" id="scanButton" hidden><svg><use href="#i-target"/></svg><span>扫描取证</span><kbd>空格</kbd></button>
+<div class="control-guide"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 · <kbd>SHIFT</kbd> 加速</span><span><svg><use href="#i-target"/></svg>小地图导航 · 镜头随无人机移动</span></div><div class="kind-tip"><span>✦</span><p><strong>每飞远一点，就多一份发现</strong>20 类事件每类仅出现一次，<br>新一轮会重新分配街区事件。</p></div>
+</div>
+</aside></div>
+<footer class="page-footer"><p><svg><use href="#i-leaf"/></svg><strong>守护的是交通，更是每一个平凡的日常。</strong><span>文明杭州 · 你我同行</span></p><span>纯前端科普小游戏 <i>·</i> 学习规则，传递善意</span></footer>
+</main>
+<dialog class="conversation-dialog" id="conversationDialog" aria-labelledby="conversationTitle"><div class="conversation-banner"><span><i></i>城市已时停 · 倒计时暂停</span><svg><use href="#i-pause"/></svg></div><div class="dialog-body"><div class="dialog-eyebrow" id="conversationLocation"></div><h2 id="conversationTitle"></h2><div class="dialogue-line officer"><span class="avatar drone-avatar"><svg><use href="#i-drone"/></svg></span><div><span class="speaker-name">小杭 <small>AI 文明引导员</small></span><p id="officerText"></p></div></div><div class="dialogue-line citizen"><span class="avatar citizen-avatar" id="citizenAvatar"></span><div><span class="speaker-name" id="citizenName"></span><p id="citizenText"></p></div></div><div class="knowledge-card"><span class="knowledge-icon"><svg><use href="#i-book"/></svg></span><div><strong>带走一个交通小知识</strong><p id="knowledgeText"></p><small id="knowledgeSource"></small></div></div><button class="primary-button" id="continueButton"><span>谢谢配合，一起文明出行</span><svg><use href="#i-arrow"/></svg></button><p class="dialog-footnote">完成友善劝导 +100 文明积分 · 收获 1 个交通知识</p></div></dialog>
+<dialog class="info-dialog" id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-body"><button class="close-dialog icon-button" data-close="helpDialog" aria-label="关闭操作说明"><svg><use href="#i-close"/></svg></button><span class="dialog-eyebrow">小杭的飞行手册</span><h2 id="helpTitle">给城市一分钟的温柔。</h2><div class="help-steps"><div><b>01</b><p><strong>飞向橙色标记</strong>点击「开始巡逻」启动 60 秒挑战。用 WASD、方向键或触屏方向键驾驶，Shift 或加速按钮提升速度。地图比屏幕更大，镜头会跟随你移动。</p></div><div><b>02</b><p><strong>靠近并扫描</strong>进入标记附近的扫描范围，按空格或点击「扫描取证」。点击主地图或小地图的橙色标记，小杭会真实飞近并扫描。侧栏的附近事件也能一键导航。</p></div><div><b>03</b><p><strong>让文明多停留一会儿</strong>发现问题后，全城和倒计时暂停。阅读双方对话与知识卡，点击友善回复后继续巡逻。</p></div></div><div class="help-note">每起成功劝导 +100 分。60 秒结束或 20 起不同事件全部纠正后获得巡逻报告。<br>按 P / Esc 暂停；切换浏览器标签页会自动暂停。</div><button class="primary-button" data-close="helpDialog">我知道啦</button></div></dialog>
+<dialog class="info-dialog book-dialog" id="bookDialog" aria-labelledby="bookTitle"><div class="dialog-body"><button class="close-dialog icon-button" data-close="bookDialog" aria-label="关闭交通手册"><svg><use href="#i-close"/></svg></button><span class="dialog-eyebrow">CIVILIZED TRAFFIC HANDBOOK</span><h2 id="bookTitle">把安全知识，装进行囊。</h2><p class="muted">20 类不同情境，收藏一路平安的出行知识。</p><div id="bookEntries"></div><p class="source-note">基础规则参考《中华人民共和国道路交通安全法》及其实施条例。游戏采用简化虚拟情境，以文明交通科普为目的。</p><button class="primary-button" data-close="bookDialog">带着知识，继续出发</button></div></dialog>
+<dialog class="info-dialog" id="recordsDialog" aria-labelledby="recordsTitle"><div class="dialog-body"><button class="close-dialog icon-button" data-close="recordsDialog" aria-label="关闭巡逻档案"><svg><use href="#i-close"/></svg></button><span class="dialog-eyebrow">MY CITY GUARDIAN JOURNAL</span><h2 id="recordsTitle">你的每次守护，都算数。</h2><div id="recordsContent"></div><p class="source-note">档案保存在当前浏览器本地，最多记录最近 10 次巡逻。</p><button class="primary-button" data-close="recordsDialog">回到城市</button></div></dialog>
+<dialog class="info-dialog pause-dialog" id="pauseDialog" aria-labelledby="pauseTitle"><div class="dialog-body"><span class="pause-illustration"><svg><use href="#i-drone"/></svg></span><span class="dialog-eyebrow">TAKE A LITTLE BREAK</span><h2 id="pauseTitle">小杭在这里等你。</h2><p class="muted">巡逻和倒计时已暂停，准备好再出发。</p><button class="primary-button" id="resumeButton">继续巡逻 <svg><use href="#i-arrow"/></svg></button><button class="secondary-button" id="restartButton">重新开始本次巡逻</button></div></dialog>
+<dialog class="result-dialog" id="resultDialog" aria-labelledby="resultTitle"><div class="dialog-body"><span class="dialog-eyebrow">HANGZHOU CITY GUARDIAN</span><div class="result-medal"><svg><use href="#i-medal"/></svg><span>✦</span><span>✦</span></div><span class="result-tag" id="resultTag">城市文明守护者</span><h2 id="resultTitle">因为你，杭州又文明了一点。</h2><p class="muted" id="resultDescription"></p><div class="result-stats"><div><strong id="resultScore">0</strong><span>文明积分</span></div><div><strong id="resultCount">0</strong><span>成功劝导 / 起</span></div><div><strong id="resultKnowledge">0</strong><span>学会知识 / 类</span></div></div><div class="result-learned" id="resultLearned"></div><p class="result-message" id="resultMessage"></p><button class="primary-button" id="playAgainButton">再守护这座城一次 <svg><use href="#i-arrow"/></svg></button><button class="secondary-button" id="finishButton">回到巡逻地图</button></div></dialog>
+<script src="content.js"></script><script src="game.js"></script></body></html>

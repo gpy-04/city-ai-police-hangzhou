@@ -1,0 +1,274 @@
+/* Window dimensions determine the available play area; world coordinates stay fixed. */
+:root {
+  --page-gutter: clamp(16px, 2.6vw, 56px);
+  --header-height: clamp(60px, 7.5dvh, 80px);
+  --nav-height: 62px;
+}
+html { min-width: 280px; }
+body { height: 100dvh; min-height: 0; display: flex; flex-direction: column; }
+.site-header { height: var(--header-height); flex: none; padding-inline: var(--page-gutter); gap: 20px; }
+.header-tools .icon-button { width: 42px; height: 42px; }
+nav { gap: clamp(14px, 2vw, 34px); }
+main { width: 100%; max-width: 2400px; min-height: 0; flex: 1; display: flex; flex-direction: column; padding: 0 var(--page-gutter); }
+.intro { flex: none; padding: clamp(12px, 2.2dvh, 26px) 0; }
+h1 { font-size: clamp(24px, 2.25vw, 38px); margin: 7px 0; }
+.intro p { font-size: 12px; line-height: 1.7; }
+.game-layout { min-height: 0; flex: 1; grid-template-columns: minmax(0, 1fr) clamp(266px, 22vw, 326px); gap: clamp(14px, 1.5vw, 24px); }
+.map-panel { min-height: 0; }
+.map-toolbar { height: 46px; padding-inline: 18px; }
+.map-title { min-width: 0; }
+.map-title strong { overflow: hidden; text-overflow: ellipsis; }
+.map-stage { min-height: 0; }
+.map-bottom { height: 32px; padding-inline: 16px; }
+.mission-panel { min-height: 0; padding: 18px; overflow: hidden; }
+.mission-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #cbd9c4 transparent; padding-right: 4px; }
+.mission-actions { flex: none; padding-top: 14px; border-top: 1px solid var(--line); }
+.mission-top { gap: 8px; }
+.time-block { margin-top: 17px; }
+.time-number { height: 52px; }
+.time-number strong { font-size: 49px; }
+.pause-button { width: 40px; height: 40px; flex: none; }
+.time-track { margin: 9px 0 16px; }
+.score-row { gap: 12px; }
+.score-row > div { min-width: 0; }
+.score-row strong { white-space: nowrap; }
+.mission-divider { margin: 18px 0; }
+.target-list { margin: 16px 0 19px; gap: 13px 10px; }
+.nearby-panel { margin-bottom: 14px; }
+.nearby-list { min-height: 167px; grid-auto-rows: 51px; }
+.nearby-event { overflow: hidden; }
+.nearby-event small { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.control-guide { padding: 11px 0 8px; gap: 6px; }
+.kind-tip { margin-top: 3px; padding: 10px; }
+.page-footer { flex: none; padding: 12px 0; }
+.world-overview { width: clamp(148px, 12vw, 186px); right: 14px; bottom: 14px; }
+.scan-hint { pointer-events: auto; min-height: 44px; max-width: calc(100% - 430px); white-space: normal; text-align: center; justify-content: center; padding: 9px 14px; bottom: 14px; }
+.scan-hint span { min-width: 0; overflow-wrap: anywhere; }
+.boost-button { min-height: 44px; bottom: 14px; left: 14px; }
+.ready-note { bottom: 22px; max-width: calc(100% - 410px); white-space: normal; padding: 14px; gap: 10px; }
+.ready-symbol { flex: none; }
+.ready-note div > span { line-height: 1.8; }
+.ready-arrow { display: none; }
+.toast { top: 78px; padding: 10px 15px; line-height: 1.7; }
+dialog { width: min(560px, calc(100% - 32px)); max-height: calc(100dvh - 32px); max-width: calc(100% - 24px); overscroll-behavior: contain; scrollbar-width: thin; }
+.book-dialog { width: min(640px, calc(100% - 32px)); }
+.dialog-body { overflow-wrap: anywhere; }
+.dialogue-line > div, .knowledge-card > div, .book-entry > div, .record-item > div { min-width: 0; }
+.close-dialog { width: 44px; height: 44px; }
+.dialog-body h2 { padding-right: 22px; }
+.pause-dialog h2, .result-dialog h2 { padding-right: 0; }
+
+@media (max-width: 1200px) {
+  .local-tag, .map-version, .map-weather, .map-scale { display: none; }
+  .brand > span:last-child { font-size: 16px; }
+  .brand small { font-size: 7px; letter-spacing: 1.2px; }
+  .nav-item { font-size: 12px; gap: 6px; }
+  .scene-stamp { padding-left: 16px; }
+  .scene-stamp small { font-size: 7px; }
+  .mission-panel { padding: 16px; }
+  .ready-note { left: 18px; transform: none; max-width: calc(100% - 205px); }
+  .ready-note strong { font-size: 11px; }
+  .ready-note div > span { font-size: 9px; }
+  .ready-symbol { display: none; }
+  .ready-note { animation: none; }
+  .scan-hint { left: 14px; bottom: 70px; transform: none; max-width: calc(100% - 200px); }
+  .page-footer > span { display: none; }
+}
+
+@media (min-width: 960px) and (max-height: 850px) {
+  .intro { padding-block: 12px; }
+  .eyebrow { font-size: 9px; }
+  h1 { font-size: clamp(23px, 2vw, 30px); }
+  .kind-tip { display: none; }
+  .mission-actions { padding-top: 10px; }
+  .control-guide { padding-bottom: 0; }
+  .page-footer { padding-block: 9px; }
+}
+
+@media (min-width: 960px) and (max-height: 650px) {
+  :root { --header-height: 56px; }
+  .brand-icon { width: 36px; height: 38px; }
+  .intro { padding-block: 9px; }
+  .intro .eyebrow, .intro p, .scene-stamp, .page-footer, .control-guide { display: none; }
+  h1 { font-size: 23px; margin: 2px 0; }
+  main { padding-bottom: 12px; }
+  .mission-actions { padding-top: 10px; }
+  .map-toolbar { height: 38px; }
+  .map-bottom { height: 28px; }
+  .map-location { top: 12px; left: 14px; }
+  .map-location > div { display: none; }
+  .map-weather { display: none; }
+  .world-overview { width: 142px; padding: 6px; }
+  .ready-note { left: 16px; transform: none; max-width: calc(100% - 185px); animation: none; }
+  .scan-hint { left: 50%; bottom: 14px; transform: translateX(-50%); max-width: calc(100% - 310px); font-size: 9px; }
+  .toast { top: 14px; font-size: 10px; }
+}
+
+/* Narrow screens use a full-width city, followed by a readable task dashboard. */
+@media (max-width: 959px) {
+  :root { --page-gutter: clamp(10px, 3vw, 24px); --header-height: 64px; }
+  html { scrollbar-gutter: auto; }
+  body { display: block; height: auto; min-height: 100dvh; }
+  .site-header { height: calc(var(--header-height) + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); padding-left: max(var(--page-gutter), env(safe-area-inset-left)); padding-right: max(var(--page-gutter), env(safe-area-inset-right)); gap: 8px; }
+  .brand { gap: 9px; min-width: 0; }
+  .brand-icon { width: 38px; height: 40px; }
+  .brand > span:last-child { font-size: 16px; letter-spacing: .3px; }
+  .brand small { font-size: 6px; letter-spacing: 1.2px; margin-top: 5px; }
+  .header-tools { gap: 4px; }
+  .header-tools .icon-button { width: 44px; height: 44px; }
+  nav { position: fixed; inset: auto 0 0; z-index: 8; height: calc(var(--nav-height) + env(safe-area-inset-bottom)); gap: 0; padding: 0 max(8px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(8px, env(safe-area-inset-left)); justify-content: space-around; background: #fffffff5; backdrop-filter: blur(12px); border-top: 1px solid var(--line); }
+  .nav-item { flex: 1; flex-direction: column; gap: 4px; min-width: 0; font-size: 10px; padding: 7px 4px; }
+  .nav-item svg { width: 20px; height: 20px; }
+  .nav-item.active:after { top: 0; bottom: auto; left: 28%; right: 28%; }
+  main { display: block; padding: 0 max(var(--page-gutter), env(safe-area-inset-right)) calc(var(--nav-height) + env(safe-area-inset-bottom) + 18px) max(var(--page-gutter), env(safe-area-inset-left)); }
+  .intro { padding: 18px 2px; }
+  .eyebrow { font-size: 8px; gap: 8px; }
+  .eyebrow > span { font-size: 9px; letter-spacing: 1px; }
+  h1 { font-size: clamp(21px, 4.7vw, 31px); letter-spacing: 0; margin: 9px 0 7px; }
+  .intro p { font-size: 11px; line-height: 1.8; max-width: 560px; letter-spacing: 0; }
+  .scene-stamp { display: none; }
+  .game-layout { display: flex; flex-direction: column; gap: 14px; }
+  .map-panel { border-radius: 13px; }
+  .map-toolbar { height: 42px; padding-inline: 12px; gap: 10px; }
+  .map-title { gap: 5px; }
+  .map-title strong { font-size: 11px; }
+  .map-live { font-size: 9px; flex: none; }
+  .map-signal { display: none; }
+  .map-stage { flex: none; height: clamp(260px, calc(100svh - 340px), 700px); }
+  .map-bottom { height: 30px; padding-inline: 10px; justify-content: center; }
+  .legend { gap: clamp(10px, 4vw, 25px); }
+  .legend > span { font-size: 9px; }
+  .map-location { top: 12px; left: 12px; gap: 7px; }
+  .north { font-size: 8px; }
+  .north > span { font-size: 23px; line-height: 24px; }
+  .map-location > div { display: none; }
+  .ready-note { left: 12px; right: 12px; bottom: 12px; transform: none; width: auto; max-width: none; min-height: 68px; padding: 10px 12px; gap: 10px; animation: none; }
+  .ready-note > div { min-width: 0; flex: 1; }
+  .ready-note strong { font-size: 11px; line-height: 1.6; }
+  .ready-note div > span { font-size: 9px; line-height: 1.6; margin-top: 4px; }
+  .mobile-start { display: block; pointer-events: auto; min-width: 60px; min-height: 46px; border-radius: 9px; color: white; background: var(--green); font-size: 12px; flex: none; padding: 10px 14px; }
+  .mobile-hud { position: absolute; display: flex; gap: 9px; align-items: center; top: 12px; right: 12px; padding: 5px 6px 5px 10px; border: 1px solid white; border-radius: 10px; background: #fffffff0; box-shadow: 0 3px 15px #527b4d12; color: #6b8f70; font-size: 10px; }
+  .mobile-hud > span { white-space: nowrap; }
+  .mobile-hud b { font: 21px Patrol, sans-serif; color: var(--green); margin-right: 2px; }
+  .mobile-hud button { width: 44px; height: 44px; display: grid; place-items: center; background: #edf4e9; color: #6a916e; border-radius: 8px; }
+  .mobile-hud svg { width: 16px; height: 16px; }
+  .touch-controls { display: grid; left: 12px; bottom: 12px; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(2, 44px); gap: 4px; z-index: 3; }
+  .touch-controls button { width: 44px; height: 44px; font-size: 21px; border-radius: 10px; }
+  .scan-hint { left: auto; right: 12px; bottom: 12px; transform: none; max-width: calc(100% - 176px); width: clamp(116px, 34vw, 210px); min-height: 48px; border-radius: 10px; font-size: 10px; line-height: 1.5; padding: 8px; gap: 6px; z-index: 3; }
+  .scan-hint svg { width: 17px; height: 17px; }
+  .world-overview { right: 12px; bottom: 76px; width: clamp(116px, 30vw, 152px); padding: 6px; border-radius: 10px; }
+  .overview-title { font-size: 8px; gap: 4px; margin-bottom: 4px; }
+  .overview-title > span:last-child { font-size: 7px; }
+  .overview-title b { font-size: 10px; }
+  .overview-caption { font-size: 6px; letter-spacing: 0; margin-top: 4px; }
+  .boost-button { top: 70px; right: auto; bottom: auto; left: 12px; min-width: 76px; min-height: 44px; border-radius: 9px; padding: 8px 12px; font-size: 11px; }
+  .boost-button kbd { display: none; }
+  .toast { top: 134px; font-size: 10px; max-width: calc(100% - 30px); padding: 8px 11px; }
+  .mission-panel { border-radius: 13px; padding: 18px; height: auto; }
+  .mission-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 18px; overflow: visible; padding: 0; }
+  .mission-top { grid-column: 1 / -1; margin-bottom: 8px; }
+  .time-block { grid-column: 1; grid-row: 2; margin-top: 6px; gap: 8px; }
+  .time-icon { display: none; }
+  .time-description { font-size: 10px; }
+  .time-number { height: 48px; }
+  .time-number strong { font-size: 44px; }
+  .time-track { grid-column: 1; grid-row: 3; margin: 6px 0 13px; }
+  .score-row { grid-column: 2; grid-row: 2 / 4; align-items: center; padding-left: 14px; border-left: 1px solid var(--line); gap: 12px; }
+  .score-row > div > span { font-size: 9px; margin-bottom: 7px; }
+  .score-row strong { font-size: 25px; }
+  .score-row strong span { font-size: 9px; margin-left: 4px; }
+  .mission-divider { grid-column: 1 / -1; margin: 6px 0 20px; }
+  .mission-body > .targets-heading, .target-list, .nearby-panel { grid-column: 1 / -1; }
+  .target-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 15px; margin: 17px 0 22px; }
+  .target-type .type-icon { width: 31px; height: 34px; }
+  .target-type strong { font-size: 11px; }
+  .target-type > div > span { display: block; font-size: 8px; }
+  .nearby-list { min-height: 177px; grid-auto-rows: 55px; gap: 6px; }
+  .nearby-event strong { font-size: 12px; }
+  .nearby-event small { font-size: 9px; }
+  .mission-actions { display: grid; grid-template-columns: 1fr; padding-top: 14px; }
+  .control-guide { padding: 12px 0; }
+  .control-guide > span:first-child { display: none; }
+  .control-guide > span:last-child { font-size: 10px; }
+  .kind-tip { display: flex; }
+  .kind-tip br { display: none; }
+  .page-footer { padding: 20px 0 8px; justify-content: center; }
+  .page-footer p { font-size: 9px; gap: 6px; text-align: center; }
+  .page-footer p > span { display: none; }
+  body[data-patrol-active="true"] .intro, body[data-patrol-active="true"] .page-footer { display: none; }
+  body[data-patrol-active="false"] .world-overview { bottom: 104px; }
+  body[data-patrol-active="true"] main { padding-top: 8px; }
+  body[data-patrol-active="true"] .map-stage { height: calc(100dvh - var(--header-height) - var(--nav-height) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 90px); min-height: 220px; }
+  dialog { max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px); border-radius: 15px; }
+  .dialog-body, .conversation-dialog .dialog-body, .result-dialog .dialog-body { padding: 22px; }
+  .dialog-body h2 { font-size: 21px; margin-bottom: 20px; }
+  .close-dialog { right: 12px; top: 12px; }
+  .dialogue-line { gap: 9px; margin: 18px 0; }
+  .dialogue-line p { font-size: 12px; padding: 11px 12px; line-height: 1.8; }
+  .speaker-name small { display: inline-block; margin-left: 4px; }
+  .knowledge-card { padding: 13px; margin: 20px 0; gap: 8px; }
+  .knowledge-card p { font-size: 12px; }
+  .result-dialog h2 { font-size: 21px; }
+  .result-stats { padding: 17px 0; margin: 20px 0; }
+}
+
+@media (max-width: 359px) {
+  .brand > span:last-child { font-size: 14px; }
+  .brand small { letter-spacing: .6px; }
+  .brand-icon { width: 32px; height: 35px; }
+  .header-tools { gap: 0; }
+  .map-live { font-size: 8px; }
+  .map-title strong { font-size: 10px; }
+  .mission-panel { padding: 14px; }
+  .mission-body { column-gap: 10px; }
+  .score-row { padding-left: 10px; gap: 8px; }
+  .score-row strong { font-size: 22px; }
+  .score-row strong span { font-size: 8px; margin-left: 2px; }
+  .target-list { gap: 14px 8px; }
+  .target-type { gap: 5px; }
+  .target-type .type-icon { width: 25px; }
+  .target-type strong { font-size: 10px; }
+  .target-type > div > span { font-size: 7px; }
+  .dialog-body, .conversation-dialog .dialog-body { padding: 18px; }
+  .avatar { width: 32px; height: 35px; }
+  .dialog-body h2 { font-size: 19px; }
+  .dialogue-line p { font-size: 11px; }
+}
+
+@media (max-width: 959px) and (max-height: 700px) and (orientation: portrait) {
+  .intro { padding-block: 12px; }
+  .intro .eyebrow, .intro p { display: none; }
+  h1 { font-size: 21px; margin: 0; }
+}
+
+/* A phone turned sideways keeps the flight controls in a single visible frame. */
+@media (max-width: 959px) and (max-height: 540px) and (orientation: landscape) {
+  :root { --header-height: 48px; --nav-height: 50px; }
+  .brand-icon { width: 30px; height: 32px; }
+  .brand small { display: none; }
+  .intro, .page-footer { display: none; }
+  main { padding-top: 6px; }
+  .map-toolbar { height: 34px; }
+  .map-bottom { display: none; }
+  .map-stage, body[data-patrol-active="true"] .map-stage { height: calc(100dvh - var(--header-height) - var(--nav-height) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 50px); min-height: 190px; }
+  .mobile-hud { top: 10px; right: 10px; padding-block: 2px; }
+  .mobile-hud b { font-size: 19px; }
+  .boost-button { top: 10px; right: 205px; left: auto; }
+  .world-overview { width: 122px; right: 176px; bottom: 10px; padding: 5px; }
+  body[data-patrol-active="false"] .world-overview { right: 10px; bottom: 68px; }
+  .overview-title { margin-bottom: 2px; }
+  .overview-caption { display: none; }
+  .touch-controls { bottom: 10px; left: 10px; }
+  .scan-hint { bottom: 10px; right: 10px; width: 150px; }
+  .ready-note { left: 12px; right: 155px; bottom: 12px; }
+  .toast { top: 64px; max-width: calc(100% - 350px); font-size: 9px; }
+  .nav-item { flex-direction: row; font-size: 10px; gap: 7px; }
+}
+
+/* Large touch tablets also get usable flight controls. */
+@media (min-width: 960px) and (pointer: coarse) {
+  .touch-controls { display: grid; left: 14px; bottom: 14px; grid-template-columns: repeat(3, 44px); grid-template-rows: repeat(2, 44px); gap: 4px; }
+  .touch-controls button { width: 44px; height: 44px; }
+  .boost-button { top: 72px; right: 14px; left: auto; bottom: auto; }
+  .scan-hint { left: 50%; max-width: calc(100% - 390px); transform: translateX(-50%); }
+}

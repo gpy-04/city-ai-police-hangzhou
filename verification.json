@@ -1,0 +1,28 @@
+{
+  "verifiedAt": "2026-10-16T04:10:14.127Z",
+  "browser": "Microsoft Edge / Playwright",
+  "world": {
+    "width": 3000,
+    "height": 2000,
+    "areaMultiplier": 6.25,
+    "districts": 6,
+    "eventTypes": 20
+  },
+  "checks": [
+    "all building roofs, shadows and new amenities clear roads, sidewalks and canal; buildings do not overlap; 20+ themed parcels enrich the city",
+    "actual world is 6.25 times larger, with 6 districts and 20 unique event narratives",
+    "nearby scan freezes timer, world animation and follow camera during dialogue",
+    "keyboard acceleration and camera follow use world coordinates",
+    "pause, resume and 20-entry handbook preserve time",
+    "mini-map navigation flies continuously beyond the old map and discovers Qianjiang",
+    "all 20 different events complete once each, all 6 districts are explored, full score is 2000",
+    "replay resets progress and reshuffles new event locations",
+    "60-second limit still ends the expanded patrol",
+    "2000-point results persist and original 8-target journals remain readable",
+    "real touch controls cross the old boundary; mobile mini-map, boost and dialogue work",
+    "phone pause and automatic focus-loss pause remain functional",
+    "320–1920px layouts, undistorted map rendering and reduced-motion playability",
+    "no browser runtime errors"
+  ],
+  "errors": []
+}

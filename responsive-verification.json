@@ -1,0 +1,148 @@
+{
+  "verifiedAt": "2026-10-16T04:08:48.746Z",
+  "browser": "Microsoft Edge / Playwright",
+  "sizes": [
+    {
+      "size": "320×480",
+      "map": {
+        "width": 298,
+        "height": 264
+      }
+    },
+    {
+      "size": "320×568",
+      "map": {
+        "width": 298,
+        "height": 352
+      }
+    },
+    {
+      "size": "360×640",
+      "map": {
+        "width": 336,
+        "height": 424
+      }
+    },
+    {
+      "size": "375×667",
+      "map": {
+        "width": 351,
+        "height": 451
+      }
+    },
+    {
+      "size": "390×844",
+      "map": {
+        "width": 365,
+        "height": 628
+      }
+    },
+    {
+      "size": "414×896",
+      "map": {
+        "width": 387,
+        "height": 680
+      }
+    },
+    {
+      "size": "600×800",
+      "map": {
+        "width": 562,
+        "height": 584
+      }
+    },
+    {
+      "size": "768×1024",
+      "map": {
+        "width": 720,
+        "height": 808
+      }
+    },
+    {
+      "size": "820×1180",
+      "map": {
+        "width": 770,
+        "height": 964
+      }
+    },
+    {
+      "size": "844×390",
+      "map": {
+        "width": 794,
+        "height": 242
+      }
+    },
+    {
+      "size": "740×360",
+      "map": {
+        "width": 694,
+        "height": 212
+      }
+    },
+    {
+      "size": "667×375",
+      "map": {
+        "width": 625,
+        "height": 227
+      }
+    },
+    {
+      "size": "960×540",
+      "map": {
+        "width": 628,
+        "height": 350
+      }
+    },
+    {
+      "size": "1024×600",
+      "map": {
+        "width": 687,
+        "height": 410
+      }
+    },
+    {
+      "size": "1280×720",
+      "map": {
+        "width": 911,
+        "height": 437
+      }
+    },
+    {
+      "size": "1366×768",
+      "map": {
+        "width": 972,
+        "height": 482
+      }
+    },
+    {
+      "size": "1440×900",
+      "map": {
+        "width": 1025,
+        "height": 578
+      }
+    },
+    {
+      "size": "1920×1080",
+      "map": {
+        "width": 1468,
+        "height": 730
+      }
+    },
+    {
+      "size": "2560×1440",
+      "map": {
+        "width": 1936,
+        "height": 1085
+      }
+    }
+  ],
+  "checks": [
+    "live resize preserves position, timer, score and all events",
+    "desktop game and scan action fit browser height",
+    "mobile controls fit above navigation without overlapping",
+    "44px touch targets, high-DPI canvas and equal map scales",
+    "orientation changes preserve time-stop conversations",
+    "real touch movement, landscape boost/pause and handbook work"
+  ],
+  "errors": []
+}
